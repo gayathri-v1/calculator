@@ -25,23 +25,23 @@ equal.addEventListener('click',function(){
     console.log(typeof answer);
     if(answer.includes("-")){
        const nums= answer.split('-');
-       const calc=subtract(parseInt(nums[0]),parseInt(nums[1]));
-       display.textContent=calc;
+       const calc=subtract(Number(nums[0]),Number(nums[1]));
+       display.textContent=calc.toFixed(2);
     }
     else if(answer.includes("x")){
         const nums=answer.split('x');
-        const calc=multiply(parseInt(nums[0]),parseInt(nums[1]));
-        display.textContent=calc;
+        const calc=multiply(Number(nums[0]),Number(nums[1]));
+        display.textContent=calc.toFixed(2);
     }
     else if(answer.includes("/")){
         const nums=answer.split('/');
-        const calc=divide(parseInt(nums[0]),parseInt(nums[1]));
-        display.textContent=calc;
+        const calc=divide(Number(nums[0]),Number(nums[1]));
+        display.textContent=calc.toFixed(2);
     }
     else{
         const nums=answer.split('+');
-        const calc=addition(parseInt(nums[0]),parseInt(nums[1]));
-        display.textContent=calc;
+        const calc=addition(Number(nums[0]),Number(nums[1]));
+        display.textContent=calc.toFixed(2);
     }
 })
     
