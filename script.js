@@ -9,7 +9,7 @@ buttons.forEach(function(btn){
         }
         else if(value==='clear'){
         display.textContent=" ";
-
+        operatorCount=0;
         }
         
         else{
@@ -21,8 +21,12 @@ buttons.forEach(function(btn){
 //to calculate after equal button is clicked.
 const equal= document.querySelector('.equals');
 equal.addEventListener('click',function(){
-    const answer= display.textContent;
-    console.log(typeof answer);
+const answer= display.textContent;
+operate(answer);
+});
+
+function operate(answer){
+    
     if(answer.includes("-")){
        const nums= answer.split('-');
        const calc=subtract(Number(nums[0]),Number(nums[1]));
@@ -43,10 +47,28 @@ equal.addEventListener('click',function(){
         const calc=addition(Number(nums[0]),Number(nums[1]));
         display.textContent=calc.toFixed(2);
     }
-})
-    
+}
+// to calculate expression when operator is clicked without equals
+let operatorCount=0;
+const operators= document.querySelectorAll('.operator');
+operators.forEach(function(operator){
+    operator.addEventListener('click',function(){
+        operatorCount++;
+        opvalue=operator.value;
+        const answer= display.textContent
+        if(operatorCount>=2){
+            operate(answer.slice(0,-1));
+        }
+        else{
+            operate(answer);
+        }
+        
+        display.textContent += opvalue;
+});
+});
 
-// console.log(subtract(5,3));
+
+// basic functions
 function addition(a,b){
     return a+b;
 }
