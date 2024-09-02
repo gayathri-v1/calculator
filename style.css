@@ -34,6 +34,9 @@ button{
     border-radius: 50%;
     background-color:burlywood;
 }
+.operator, .equals{
+    background-color: rgb(142, 103, 53);
+}
 .container2{
     padding: 20px;
     margin-top: 15px;
@@ -43,7 +46,7 @@ button{
     flex:1;
     gap: 5px;
 }
-.number,.operator ,.clear,.backspace{
+.number,.operator ,.clear,.backspace,.equals{
     flex: 1;
 }
 button:active{
