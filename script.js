@@ -34,12 +34,12 @@ function operate(answer){
     }
     else if(answer.includes("x")){
         const nums=answer.split('x');
-        const calc=multiply(Number(nums[0]),Number(nums[1]));
+        const calc=multiply(Number(nums[0]),Number(nums[1])); // The issue here is (Number(nums[1]) is an empty line when u convert it, it becomes 0, so it won't work and the result will be 0. 
         display.textContent=calc.toFixed(2);
     }
     else if(answer.includes("/")){
         const nums=answer.split('/');
-        const calc=divide(Number(nums[0]),Number(nums[1]));
+        const calc=divide(Number(nums[0]),Number(nums[1])); // Same here, u dividing ur first number to 0 (cuz '' is zero when a number) and it throws infinity (it's not divided by 0)
         display.textContent=calc.toFixed(2);
     }
     else{
@@ -68,6 +68,7 @@ operators.forEach(function(operator){
 });
 
 
+
 // basic functions
 function addition(a,b){
     return a+b;
@@ -76,8 +77,8 @@ function subtract(a,b){
     return a-b;
 }
 function multiply(a,b){
-    return a*b;
+    return b === 0 ? a*1 : a*b; // this is multiply handle case
 }
 function divide(a,b){
-    return a/b;
+    return b === 0 ? a/1 : a/b; // this is divistion handle case
 }
